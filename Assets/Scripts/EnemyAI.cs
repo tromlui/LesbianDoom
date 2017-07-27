@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
 
+	public GameObject player;
+	public GameObject fellowEnemy;
+	public GameObject otherEnemy;
+
 	// Use this for initialization
 	void Start () {
 		
