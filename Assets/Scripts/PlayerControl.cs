@@ -25,20 +25,6 @@ public class PlayerControl : MonoBehaviour {
 
 		transform.Translate (0f, 0f, inputVector.z);
 
-		/*
-		//moves camera up and down when you move forwarda
-		if (Input.GetKey(KeyCode.W)) {
-			mainCamera.transform.Translate (Vector3.up * cameraSpeed * Time.deltaTime);
-			mainCamera.transform.Translate (-Vector3.up * cameraSpeed * Time.deltaTime);
-		}
-
-		//moves camera down and up when you move backwards
-		if (Input.GetKey(KeyCode.S)) {
-			mainCamera.transform.Translate (-Vector3.up * cameraSpeed * Time.deltaTime);
-			mainCamera.transform.Translate (Vector3.up * cameraSpeed * Time.deltaTime);
-		}
-		*/
-
 		//a and d are used to turn left and right
 		float turnAngle = turnSpeed * Input.GetAxis ("Horizontal") * Time.deltaTime;
 

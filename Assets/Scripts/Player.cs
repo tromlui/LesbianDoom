@@ -15,11 +15,15 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerCurHP = playerMaxHP;
+        playerCurHP = 100;
     }
 
     void EnemyHit(int damage)
     {
+        if(playerCurHP == playerMaxHP)
+        {
+
+        }
         playerCurHP -= damage;
     }
 
