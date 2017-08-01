@@ -6,9 +6,10 @@ public class Player : MonoBehaviour
 {
 
     public int playerCurHP;
-    public int playerMaxHP;
+    private int playerMaxHP;
 
-    //public int startingAmmo;
+    public int ammoCount;
+    private int maxAmmo;
 
     //Need variables for bullets, shells, rockets, and cell?
 
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
 
     void EnemyHit(int damage)
     {
-        if(playerCurHP == playerMaxHP)
+        if (playerCurHP == playerMaxHP)
         {
 
         }
@@ -32,8 +33,21 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Health"))
         {
             playerCurHP++;
+            Destroy(other.gameObject);
+            Debug.Log(playerCurHP);
+            if (playerCurHP == playerMaxHP)
+            {
+                playerCurHP = 200;
+            }
+        }
+        else if (other.gameObject.CompareTag("Ammo"))
+        {
+            ammoCount++;
+            Destroy(other.gameObject);
+            Debug.Log(ammoCount);
         }
     }
+
 
     // create another for ammo (have to playtest more to see how that works)
 
