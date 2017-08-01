@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyTrigger : MonoBehaviour {
 
-	public GameObject playerTrigger;
-
-	public static bool canMove;
+	public bool canMove;
 
 	void OnTriggerEnter (Collider Other) {
 		if (Other.tag == "playerSphere") {
