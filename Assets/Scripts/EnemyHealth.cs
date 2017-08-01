@@ -13,6 +13,9 @@ public class EnemyHealth : MonoBehaviour
     public void PistolHit(int damage)
     {
         health = health - damage;
+		if (health == 0) {
+			Destroy (gameObject);
+		}
     }
 
 }
