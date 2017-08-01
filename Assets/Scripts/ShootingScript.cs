@@ -10,8 +10,11 @@ public class ShootingScript : MonoBehaviour {
 	private RaycastHit hit;
 	private Vector3 rayOrigin;
 
-	//public EnemyAI enemy;
+	private EnemyHealth enemyHealth; 
 
+	void Start() {
+		enemyHealth = GetComponent<EnemyHealth> ();
+	}
 	// Update is called once per frame
 	void Update () {
 		//gets position of camera
@@ -26,10 +29,10 @@ public class ShootingScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 
 			//checks to see if racyast is in contact with anything
-			if (Physics.Raycast (ray, out hit, fireRange)) {
+			if (Physics.Raycast (ray, out hit, fireRange) && hit.collider.tag.Equals("enemy")) {
 				//code in here will test for enemy, or for another obstacle (possibly the exploding vats?)
 				//damage deducted is the same for each enemy, regardless of type
-
+				enemyHealth.PistolHit (gunDamage);
 			} 
 
 		}
