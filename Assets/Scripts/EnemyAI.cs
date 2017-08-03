@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour {
 
 	public EnemyTrigger trigger;
 
+
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<EnemyTrigger> ();
@@ -31,7 +32,7 @@ public class EnemyAI : MonoBehaviour {
 		Debug.DrawRay (ray.origin, ray.direction * raycastRange, Color.yellow);
 
 		if (trigger.canMove == true) {
-			transform.position = Vector3.MoveTowards (transform.position, player.transform.position, 1.0f);
+			transform.position = Vector3.MoveTowards (transform.position, player.transform.position, 0.75f);
 			transform.LookAt (player.transform.position);
 		}
 
@@ -54,7 +55,10 @@ public class EnemyAI : MonoBehaviour {
 
 	void Shoot () {
 		GameObject bulletInstance = Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation) as GameObject;
-		bulletInstance.GetComponent<Rigidbody> ().AddForce (bulletSpawn.forward * bulletSpeed);
+		bulletInstance.GetComponent<Rigidbody> ().AddForce(transform.forward * bulletSpeed);
+
+		Destroy (bulletInstance, 2.0f);
+
 		/*
 		if (Input.GetKeyDown (KeyCode.S)) {
 			GameObject bulletInstance = Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation) as GameObject;

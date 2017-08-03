@@ -1,33 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
 
     public int playerCurHP;
     public int playerMaxHP;
+	public Text myText;
 
     //public int startingAmmo;
 
     //Need variables for bullets, shells, rockets, and cell?
 
     // Use this for initialization
-    void Start()
-    {
-        playerCurHP = playerMaxHP;
-    }
 
-    void EnemyHit(int damage)
+    public void EnemyHit(int damage)
     {
         playerCurHP -= damage;
+		if (playerCurHP == 0) {
+			myText.text = "Game Over";
+		}
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Health"))
         {
-            playerCurHP++;
+			if (playerCurHP != playerMaxHP) {
+				playerCurHP++;	
+			}
         }
     }
 
