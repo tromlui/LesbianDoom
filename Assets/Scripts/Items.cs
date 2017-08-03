@@ -13,11 +13,14 @@ public class Items : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+   /* void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            GameObject.Find("Player").GetComponent<Player>().playerCurHP += 10;
             Destroy(gameObject);
+            Debug.Log(GameObject.Find("Player").GetComponent<Player>().playerCurHP);
         }
     }
+    */
 }
