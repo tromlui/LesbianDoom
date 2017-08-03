@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public int playerCurHP;
-    private int playerMaxHP;
+    public int playerMaxHP;
     public int playerCurAmmo;
     private int playerMaxAmmo;
     public int playerCurArmor;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Text healthCount;
     public Text armorCount;
     public Text ammoCount;
+	public Text myText;
 
     //Need variables for bullets, shells, rockets, and cell?
 
