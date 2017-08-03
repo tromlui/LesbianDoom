@@ -7,17 +7,35 @@ public class Player : MonoBehaviour
 {
 
     public int playerCurHP;
-    public int playerMaxHP;
-	public Text myText;
+    private int playerMaxHP;
+    public int playerCurAmmo;
+    private int playerMaxAmmo;
+    public int playerCurArmor;
+    private int playerMaxArmor;
 
-	//public int startingAmmo;
-	public int ammoCount;
-	private int maxAmmo;
+    public Text healthCount;
+    public Text armorCount;
+    public Text ammoCount;
+
+    //Need variables for bullets, shells, rockets, and cell?
 
     // Use this for initialization
+    void Start()
+    {
+        playerCurHP = 100;
+        displayHealth();
+        playerCurAmmo = 50;
+        displayAmmo();
+        playerCurArmor = 0;
+        displayArmor();
+    }
 
     public void EnemyHit(int damage)
     {
+        if (playerCurHP == playerMaxHP)
+        {
+
+        }
         playerCurHP -= damage;
 		if (playerCurHP == 0) {
 			myText.text = "Game Over";
@@ -32,15 +50,31 @@ public class Player : MonoBehaviour
 				playerCurHP++;
 				Destroy(other.gameObject);
 				Debug.Log(playerCurHP);
+            displayHealth();
 			}
         }
+        else if (other.gameObject.CompareTag("Ammo"))
+        {
+            playerCurAmmo++;
+            Destroy(other.gameObject);
+            displayAmmo();
+            Debug.Log(ammoCount);
+        }
+    }
 
-		else if (other.gameObject.CompareTag("Ammo"))
-		{
-	        ammoCount++;
-		    Destroy(other.gameObject);
-      		Debug.Log(ammoCount);
-		}
+    void displayHealth()
+    {
+        healthCount.text = playerCurHP.ToString();
+    }
+
+    void displayAmmo()
+    {
+        ammoCount.text = playerCurAmmo.ToString();
+    }
+
+    void displayArmor()
+    {
+        armorCount.text = playerCurArmor.ToString();
     }
 
     // create another for ammo (have to playtest more to see how that works)
