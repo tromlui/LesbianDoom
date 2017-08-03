@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
 
     public int health;
@@ -10,9 +10,12 @@ public class Enemy : MonoBehaviour
     public float meleeDamage;
     public float shootDamage;
 
-    void PistolHit(int damage)
+    public void PistolHit(int damage)
     {
         health = health - damage;
+		if (health == 0) {
+			Destroy (gameObject);
+		}
     }
 
 }

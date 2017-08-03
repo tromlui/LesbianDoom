@@ -7,16 +7,16 @@ public class Player : MonoBehaviour
 {
 
     public int playerCurHP;
-    private int playerMaxHP;
+    public int playerMaxHP;
     public int playerCurAmmo;
     private int playerMaxAmmo;
     public int playerCurArmor;
     private int playerMaxArmor;
 
     public Text healthCount;
-    public Text ammoCount;
     public Text armorCount;
-
+    public Text ammoCount;
+	public Text myText;
 
     //Need variables for bullets, shells, rockets, and cell?
 
@@ -31,27 +31,28 @@ public class Player : MonoBehaviour
         displayArmor();
     }
 
-    void EnemyHit(int damage)
+    public void EnemyHit(int damage)
     {
         if (playerCurHP == playerMaxHP)
         {
 
         }
         playerCurHP -= damage;
+		if (playerCurHP == 0) {
+			myText.text = "Game Over";
+		}
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Health"))
         {
-            playerCurHP++;
-            Destroy(other.gameObject);
+			if (playerCurHP != playerMaxHP) {
+				playerCurHP++;
+				Destroy(other.gameObject);
+				Debug.Log(playerCurHP);
             displayHealth();
-            Debug.Log(playerCurHP);
-            if (playerCurHP == playerMaxHP)
-            {
-                playerCurHP = 200;
-            }
+			}
         }
         else if (other.gameObject.CompareTag("Ammo"))
         {
