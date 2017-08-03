@@ -33,11 +33,8 @@ public class Player : MonoBehaviour
 
     public void EnemyHit(int damage)
     {
-        if (playerCurHP == playerMaxHP)
-        {
-
-        }
         playerCurHP -= damage;
+        displayHealth();
 		if (playerCurHP == 0) {
 			myText.text = "Game Over";
 		}
@@ -51,12 +48,12 @@ public class Player : MonoBehaviour
 				playerCurHP++;
 				Destroy(other.gameObject);
 				Debug.Log(playerCurHP);
-            displayHealth();
+                displayHealth();
 			}
         }
         else if (other.gameObject.CompareTag("Ammo"))
         {
-            playerCurAmmo++;
+            playerCurAmmo += 15;
             Destroy(other.gameObject);
             displayAmmo();
             Debug.Log(ammoCount);
