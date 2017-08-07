@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
-	public Rigidbody player; //rigidbody for player
+	public CharacterController player; //CharacterController for player
 	Vector3 inputVector;
 	public float moveSpeed;
 	public float turnSpeed;
@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GetComponent<Rigidbody> ();
+		player = GetComponent<CharacterController> ();
 		moveSpeed = 10.0f;
 		turnSpeed = 30.0f;
 		cameraSpeed = 5.0f;
