@@ -11,6 +11,9 @@ public class ShootingScript : MonoBehaviour {
 	private Vector3 rayOrigin;
 
 	private EnemyHealth enemyHealth; 
+	public ShootingAnimation shootinganimation;
+	public Player ammoCount;
+
 
 	// Update is called once per frame
 	void Update () {
@@ -24,12 +27,17 @@ public class ShootingScript : MonoBehaviour {
 
 		//shoot from center of camera
 		if (Input.GetKeyDown (KeyCode.Space)) {
-
+			shootinganimation.shoot(); //plays the firing animation when spacebar is hit
+			GameObject.Find("Player").GetComponent<Player>().playerCurAmmo -= 1;// Subtracts 1 bullet each time player shoots
+			ammoCount.displayAmmo(); //Displays ammo count
 			//checks to see if racyast is in contact with anything
 			if (Physics.Raycast (ray, out hit, fireRange)) {
 				//code in here will test for enemy, or for another obstacle (possibly the exploding vats?)
 				//damage deducted is the same for each enemy, regardless of type
 				if (hit.collider.tag.Equals("enemy")) {
+					shootinganimation.shoot(); //plays the firing animation when spacebar is hit
+					GameObject.Find("Player").GetComponent<Player>().playerCurAmmo -= 1;// Subtracts 1 bullet each time player shoots
+					ammoCount.displayAmmo(); // displays ammo count
 					enemyHealth = hit.collider.GetComponent<EnemyHealth> (); //detects component of thing you hit
 					enemyHealth.PistolHit (gunDamage); //deducts health
 				}

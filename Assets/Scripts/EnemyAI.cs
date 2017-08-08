@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour {
 
 	public AnimationCurve tweenCurve;
 
+
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<EnemyTrigger> ();
