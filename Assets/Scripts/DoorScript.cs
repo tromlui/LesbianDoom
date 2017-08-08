@@ -21,7 +21,8 @@ public class DoorScript : MonoBehaviour {
 			
 			if (!doorOpen) {
 				if (dt.playerInRange && !isAnimating) {
-					StartCoroutine ("DoorAnimate", 4f);
+					//StartCoroutine ("DoorAnimate", 4f);
+					StartCoroutine(DoorAnimate(4f));
 					doorOpen = !doorOpen;
 				}
 				/*Vector3 target = transform.position;
@@ -29,7 +30,8 @@ public class DoorScript : MonoBehaviour {
 				transform.position = target;*/
 			} else {
 				if (!isAnimating) {
-					StartCoroutine ("DoorAnimate", -4f);
+					//StartCoroutine ("DoorAnimate", -4f);
+					StartCoroutine(DoorAnimate(-4f));
 					doorOpen = !doorOpen;
 				}
 
@@ -37,7 +39,8 @@ public class DoorScript : MonoBehaviour {
 
 		}
 		if (!dt.playerInRange && doorOpen && !isAnimating) {
-			StartCoroutine ("DoorAnimate", -4f);
+			//StartCoroutine ("DoorAnimate", -4f);
+			StartCoroutine(DoorAnimate(-4f));
 			doorOpen = !doorOpen;
 		}
 	}
@@ -52,11 +55,11 @@ public class DoorScript : MonoBehaviour {
 			transform.position.z);
 		while (t < 1) {
 			t += Time.deltaTime * 1.25f;
-			//transform.position += (target - transform.position) * .5f * Time.deltaTime;
 			transform.position = Vector3.Lerp(start, target, t);
+
+			//0 means waiting for 1 frame
 			yield return 0;
 		}
 		isAnimating = false;
-		//yield return new WaitForSeconds(0.1f);
 	}
 }
