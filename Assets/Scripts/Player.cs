@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     {
         playerCurHP -= damage;
         displayHealth();
-		if (playerCurHP == 0) {
+		if (playerCurHP <= 0) {
 			myText.text = "Game Over";
 		}
     }
