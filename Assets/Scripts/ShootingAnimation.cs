@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootingAnimation : MonoBehaviour {
 
 	public Transform gunfire;
-	public Transform muzzle;
+	Transform muzzle;
 
 	// Use this for initialization
 	void Start () {
