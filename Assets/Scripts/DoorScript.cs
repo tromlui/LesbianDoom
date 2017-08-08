@@ -28,5 +28,10 @@ public class DoorScript : MonoBehaviour {
 			}
 			doorOpen = !doorOpen;
 		}
+		if (!dt.playerInRange) {
+			Vector3 closed = transform.position;
+			closed.y = 2.33f;
+			transform.position = closed;
+		}
 	}
 }
