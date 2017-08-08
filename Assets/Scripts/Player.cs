@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Health"))
         {
 			if (playerCurHP != playerMaxHP) {
-				playerCurHP++;
+				playerCurHP += 15;
 				Destroy(other.gameObject);
 				Debug.Log(playerCurHP);
                 displayHealth();
