@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public Text healthCount;
     public Text armorCount;
     public Text ammoCount;
-	public Text myText;
 
     //Need variables for bullets, shells, rockets, and cell?
 
@@ -35,9 +34,6 @@ public class Player : MonoBehaviour
     {
         playerCurHP -= damage;
         displayHealth();
-		if (playerCurHP <= 0) {
-			myText.text = "Game Over";
-		}
     }
 
     void OnTriggerEnter(Collider other)

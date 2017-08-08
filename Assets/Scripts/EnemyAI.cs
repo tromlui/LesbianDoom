@@ -9,20 +9,13 @@ public class EnemyAI : MonoBehaviour {
 	public GameObject fellowEnemy;
 	public GameObject otherEnemy;
 	public float raycastRange;
-
 	public Transform bulletSpawn;
-
 	public GameObject bullet;
-
 	public float bulletSpeed;
-
 	public bool canShoot;
-
 	public EnemyTrigger trigger;
-
 	public float lastShootTime;
 	public float cooldown = 5f;
-
 	public AnimationCurve tweenCurve;
 
 
