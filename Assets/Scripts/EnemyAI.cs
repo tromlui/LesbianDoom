@@ -27,10 +27,6 @@ public class EnemyAI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<EnemyTrigger> ();
-		if (trigger.canMove == true) {
-			StartCoroutine (MovementCoroutine ());
-
-		}
 	}
 	
 	// Update is called once per frame
@@ -38,6 +34,11 @@ public class EnemyAI : MonoBehaviour {
 		Ray ray = new Ray (transform.position, transform.forward);
 		RaycastHit rayHit = new RaycastHit ();
 		Debug.DrawRay (ray.origin, ray.direction * raycastRange, Color.yellow);
+
+		if (trigger.canMove == true) {
+			StartCoroutine (MovementCoroutine ());
+
+		}
 
 		/*if (trigger.canMove == true) {
 			transform.position = Vector3.MoveTowards (transform.position, player.position, 0.75f);
@@ -55,7 +56,7 @@ public class EnemyAI : MonoBehaviour {
 					
 						Shoot ();
 						lastShootTime = Time.time;
-					}
+				}
 			}
 
 		} else {

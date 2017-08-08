@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
-	public Rigidbody player; //rigidbody for player
+	public Rigidbody player; //CharacterController for player
 	Vector3 inputVector;
 	public float moveSpeed;
 	public float turnSpeed;
