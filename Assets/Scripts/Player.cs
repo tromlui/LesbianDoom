@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     public Text healthCount;
     public Text armorCount;
     public Text ammoCount;
-	public Text myText;
 
     //Need variables for bullets, shells, rockets, and cell?
 
@@ -35,9 +34,6 @@ public class Player : MonoBehaviour
     {
         playerCurHP -= damage;
         displayHealth();
-		if (playerCurHP == 0) {
-			myText.text = "Game Over";
-		}
     }
 
     void OnTriggerEnter(Collider other)
@@ -45,7 +41,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Health"))
         {
 			if (playerCurHP != playerMaxHP) {
-				playerCurHP++;
+				playerCurHP += 15;
 				Destroy(other.gameObject);
 				Debug.Log(playerCurHP);
                 displayHealth();
@@ -60,17 +56,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void displayHealth()
+    public void displayHealth()
     {
         healthCount.text = playerCurHP.ToString();
     }
 
-    void displayAmmo()
+    public void displayAmmo()
     {
         ammoCount.text = playerCurAmmo.ToString();
     }
 
-    void displayArmor()
+    public void displayArmor()
     {
         armorCount.text = playerCurArmor.ToString();
     }
