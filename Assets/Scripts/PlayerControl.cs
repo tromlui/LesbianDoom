@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerControl : MonoBehaviour {
 
-	public Rigidbody player; //rigidbody for player
+	public Rigidbody player; //CharacterController for player
 	Vector3 inputVector;
-	public float moveSpeed;
-	public float turnSpeed;
+	public float moveSpeed = 10.0f;
+	public float turnSpeed = 30.0f;
 	public Camera mainCamera;
-	public float cameraSpeed;
+	public float cameraSpeed = 5.0f;
 
 	// Use this for initialization
 	void Start () {
 		player = GetComponent<Rigidbody> ();
-		moveSpeed = 10.0f;
-		turnSpeed = 30.0f;
-		cameraSpeed = 5.0f;
 	}
 	
 	// Update is called once per frame
