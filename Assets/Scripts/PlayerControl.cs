@@ -5,10 +5,10 @@ public class PlayerControl : MonoBehaviour {
 
 	public CharacterController player; //CharacterController for player
 	Vector3 inputVector;
-	public float moveSpeed;
-	public float turnSpeed;
+	public float moveSpeed = 10.0f;
+	public float turnSpeed = 30.0f;
 	public Camera mainCamera;
-	public float cameraSpeed;
+	public float cameraSpeed = 5.0f;
 
 	// Use this for initialization
 	void Start () {
