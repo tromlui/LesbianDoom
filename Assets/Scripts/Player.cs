@@ -60,17 +60,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    void displayHealth()
+    public void displayHealth()
     {
         healthCount.text = playerCurHP.ToString();
     }
 
-    void displayAmmo()
+    public void displayAmmo()
     {
         ammoCount.text = playerCurAmmo.ToString();
     }
 
-    void displayArmor()
+    public void displayArmor()
     {
         armorCount.text = playerCurArmor.ToString();
     }
