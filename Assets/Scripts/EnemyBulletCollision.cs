@@ -8,8 +8,9 @@ public class EnemyBulletCollision : MonoBehaviour {
 
 	public int bulletDamage;
 
-	void OnCollisionEnter(Collision col) {
+	void OnTriggerEnter(Collider col) {
 		if (col.gameObject.tag == "player") {
+			GetComponent<Collider>().enabled = false;
 			playerHealth = col.gameObject.GetComponent<Player> (); 
 			playerHealth.EnemyHit (bulletDamage);
 			Destroy (gameObject);
