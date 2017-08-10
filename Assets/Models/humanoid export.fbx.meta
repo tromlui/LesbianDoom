@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6ed508cf279293e4092a0e1cbd0a0f51
+guid: ef685b72b99272d4f9a8cbea4ae2d862
 timeCreated: 1502330311
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Head
-    100004: Hips
+    100000: Head
+    100002: Hips
+    100004: //RootNode
     100006: imagePlane1
     100008: imagePlane2
     100010: LeftArm
@@ -99,9 +99,9 @@ ModelImporter:
     100182: Spine
     100184: Spine1
     100186: Spine2
-    400000: //RootNode
-    400002: Head
-    400004: Hips
+    400000: Head
+    400002: Hips
+    400004: //RootNode
     400006: imagePlane1
     400008: imagePlane2
     400010: LeftArm
