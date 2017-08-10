@@ -55,15 +55,18 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Health"))
         {
-			if (playerCurHP != playerMaxHP) {
+			other.GetComponent<Items>().itemPickupSound.Play ();
 				playerCurHP += 15;
-				Destroy(other.gameObject);
+			//if (other.GetComponent<Items> ().itemPickupSound.isPlaying != true) {
+				Destroy (other.gameObject);
+				Debug.Log ("Inside tester");
+			//}
 				Debug.Log(playerCurHP);
                 displayHealth();
-			}
         }
         else if (other.gameObject.CompareTag("Ammo"))
         {
+			other.GetComponent<Items>().itemPickupSound.Play ();
             playerCurAmmo += 15;
             Destroy(other.gameObject);
             displayAmmo();
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
         }
 		else if (other.gameObject.CompareTag("ArmorPot"))
 		{
+			other.GetComponent<Items>().itemPickupSound.Play ();
 			playerCurArmor += 1;
 			Destroy(other.gameObject);
 			displayArmor();
@@ -79,6 +83,7 @@ public class Player : MonoBehaviour
 
 		else if (other.gameObject.CompareTag("Armor"))
 		{
+			other.GetComponent<Items>().itemPickupSound.Play ();
 			if (playerCurArmor < 100) {
 				playerCurArmor = 100;
 				Destroy(other.gameObject);

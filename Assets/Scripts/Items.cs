@@ -6,12 +6,26 @@ public class Items : MonoBehaviour
 {
     private float rotationSpeed = 2f;
 
+	public AudioSource itemPickupSound;
+
+
+	void Start(){
+		//itemPickupSound = GetComponent<AudioSource> ();
+	}
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward * rotationSpeed);
+		transform.Rotate(Vector3.right * rotationSpeed);
 
     }
+
+	public void playItemSound(){
+		itemPickupSound.Play();
+		Debug.Log ("Testing");
+	}
+
+			
+			
 
    /* void OnTriggerEnter(Collider other)
     {
