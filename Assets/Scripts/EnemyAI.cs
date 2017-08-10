@@ -4,33 +4,25 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour {
 
+	public CharacterController enemy;
 	public Transform player;
 	public GameObject fellowEnemy;
 	public GameObject otherEnemy;
 	public float raycastRange;
-
 	public Transform bulletSpawn;
-
 	public GameObject bullet;
-
 	public float bulletSpeed;
-
 	public bool canShoot;
-
 	public EnemyTrigger trigger;
-
 	public float lastShootTime;
 	public float cooldown = 5f;
-
 	public AnimationCurve tweenCurve;
+
 
 	// Use this for initialization
 	void Start () {
 		trigger = GetComponent<EnemyTrigger> ();
-		if (trigger.canMove == true) {
-			StartCoroutine (MovementCoroutine ());
-
-		}
+		enemy = GetComponent<CharacterController> ();
 	}
 	
 	// Update is called once per frame
@@ -39,15 +31,13 @@ public class EnemyAI : MonoBehaviour {
 		RaycastHit rayHit = new RaycastHit ();
 		Debug.DrawRay (ray.origin, ray.direction * raycastRange, Color.yellow);
 
-		/*if (trigger.canMove == true) {
-			transform.position = Vector3.MoveTowards (transform.position, player.position, 0.75f);
+		if (trigger.canMove == true) {
 			transform.LookAt (player.position);
+			//transform.position = Vector3.MoveTowards (transform.position, player.position, 0.75f);
+			enemy.Move(Vector3.Normalize(player.position - transform.position) * 5f * Time.deltaTime);
 
-		}*/
-
+		}
 		if (Physics.Raycast (ray, out rayHit, raycastRange)) {
-
-
 
 			canShoot = true;
 			if (rayHit.collider.tag == "player") {
@@ -55,7 +45,7 @@ public class EnemyAI : MonoBehaviour {
 					
 						Shoot ();
 						lastShootTime = Time.time;
-					}
+				}
 			}
 
 		} else {
@@ -79,18 +69,6 @@ public class EnemyAI : MonoBehaviour {
 			bulletInstance.GetComponent<Rigidbody> ().AddForce (bulletSpawn.forward * bulletSpeed);
 		}
 		*/
-	}
-
-	IEnumerator MovementCoroutine() {
-		float t = 0; //will start from 0 and gradually go to 1
-		Vector3 startPos = transform.position;
-		Vector3 endPos = player.position;
-		while (t < 1f) {
-			t += Time.deltaTime * 0.1f;
-			transform.LookAt (player.position);
-			transform.position = Vector3.Lerp (startPos, endPos, tweenCurve.Evaluate (t));
-			yield return 0; //wait one frame
-		}
 	}
 
 }
