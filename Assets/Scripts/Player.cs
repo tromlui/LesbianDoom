@@ -5,21 +5,22 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+	// creates the variables for health, ammo, and armor
     public int playerCurHP;
     public int playerMaxHP;
     public int playerCurAmmo;
     private int playerMaxAmmo;
     public int playerCurArmor;
-    private int playerMaxArmor;
+    private int playerMaxArmor = 200;
 
+	// text objects
     public Text healthCount;
     public Text armorCount;
     public Text ammoCount;
 
     //Need variables for bullets, shells, rockets, and cell?
 
-    // Use this for initialization
+    // Set the starting values
     void Start()
     {
         playerCurHP = 100;
@@ -32,8 +33,22 @@ public class Player : MonoBehaviour
 
     public void EnemyHit(int damage)
     {
-        playerCurHP -= damage;
+		if (playerCurArmor == 0) {
+			playerCurHP -= damage;
+		} else if (playerCurArmor > 0){
+			if (damage / 3 > playerCurArmor) {
+				damage -= playerCurArmor;
+				playerCurArmor = 0;
+			} else {
+				playerCurArmor -= damage / 3;
+				damage -= damage / 3;
+
+			}
+			playerCurHP -= damage;
+		}
+        
         displayHealth();
+		displayArmor ();
     }
 
     void OnTriggerEnter(Collider other)
@@ -54,6 +69,24 @@ public class Player : MonoBehaviour
             displayAmmo();
             Debug.Log(ammoCount);
         }
+		else if (other.gameObject.CompareTag("ArmorPot"))
+		{
+			playerCurArmor += 1;
+			Destroy(other.gameObject);
+			displayArmor();
+			Debug.Log(armorCount);
+		}
+
+		else if (other.gameObject.CompareTag("Armor"))
+		{
+			if (playerCurArmor < 100) {
+				playerCurArmor = 100;
+				Destroy(other.gameObject);
+				displayArmor();
+				Debug.Log(armorCount);
+			}
+
+		}
     }
 
     public void displayHealth()
