@@ -32,8 +32,22 @@ public class Player : MonoBehaviour
 
     public void EnemyHit(int damage)
     {
-        playerCurHP -= damage;
+		if (playerCurArmor == 0) {
+			playerCurHP -= damage;
+		} else if (playerCurArmor > 0){
+			if (damage / 3 > playerCurArmor) {
+				damage -= playerCurArmor;
+				playerCurArmor = 0;
+			} else {
+				playerCurArmor -= damage / 3;
+				damage -= damage / 3;
+
+			}
+			playerCurHP -= damage;
+		}
+        
         displayHealth();
+		displayArmor ();
     }
 
     void OnTriggerEnter(Collider other)
