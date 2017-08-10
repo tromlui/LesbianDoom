@@ -16,7 +16,6 @@ public class EnemyAI : MonoBehaviour {
 	public EnemyTrigger trigger;
 	public float lastShootTime;
 	public float cooldown = 5f;
-	public AnimationCurve tweenCurve;
 
 
 	// Use this for initialization
