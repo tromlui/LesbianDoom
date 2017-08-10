@@ -46,6 +46,7 @@ public class ShootingScript : MonoBehaviour {
 			
 				Debug.Log("Shoot" + hit.collider.name);
 				if (hit.collider.tag.Equals("enemy")) {
+					hit.transform.GetComponent<ParticleSystem> ().Play ();
 					if(ammoCount.playerCurAmmo !=0){
 						enemyHealth = hit.collider.GetComponent<EnemyHealth> (); //detects component of thing you hit
 						enemyHealth.PistolHit (gunDamage); //deducts health
