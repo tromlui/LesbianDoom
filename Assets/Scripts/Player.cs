@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+	// creates the variables for health, ammo, and armor
     public int playerCurHP;
     public int playerMaxHP;
     public int playerCurAmmo;
@@ -13,13 +13,14 @@ public class Player : MonoBehaviour
     public int playerCurArmor;
     private int playerMaxArmor;
 
+	// text objects
     public Text healthCount;
     public Text armorCount;
     public Text ammoCount;
 
     //Need variables for bullets, shells, rockets, and cell?
 
-    // Use this for initialization
+    // Set the starting values
     void Start()
     {
         playerCurHP = 100;
@@ -34,6 +35,9 @@ public class Player : MonoBehaviour
     {
         playerCurHP -= damage;
         displayHealth();
+		if (playerCurHP == 0){
+			//game over script
+		}
     }
 
     void OnTriggerEnter(Collider other)
