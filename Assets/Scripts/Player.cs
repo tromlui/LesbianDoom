@@ -17,6 +17,10 @@ public class Player : MonoBehaviour
     public Text armorCount;
     public Text ammoCount;
 
+
+	//here's the end game stuff
+	public GameOver gameOver;
+
     //Need variables for bullets, shells, rockets, and cell?
 
     // Use this for initialization
@@ -28,7 +32,15 @@ public class Player : MonoBehaviour
         displayAmmo();
         playerCurArmor = 0;
         displayArmor();
+
+		gameOver = GetComponent<GameOver> ();
     }
+
+	void Update(){
+		if (playerCurHP <= 0) {
+			gameOver.YouLose ();
+		}
+	}
 
     public void EnemyHit(int damage)
     {
