@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public int playerCurAmmo;
     private int playerMaxAmmo;
     public int playerCurArmor;
-    private int playerMaxArmor;
+    private int playerMaxArmor = 200;
 
     public Text healthCount;
     public Text armorCount;
@@ -54,6 +54,24 @@ public class Player : MonoBehaviour
             displayAmmo();
             Debug.Log(ammoCount);
         }
+		else if (other.gameObject.CompareTag("ArmorPot"))
+		{
+			playerCurArmor += 1;
+			Destroy(other.gameObject);
+			displayArmor();
+			Debug.Log(armorCount);
+		}
+
+		else if (other.gameObject.CompareTag("Armor"))
+		{
+			if (playerCurArmor < 100) {
+				playerCurArmor = 100;
+				Destroy(other.gameObject);
+				displayArmor();
+				Debug.Log(armorCount);
+			}
+
+		}
     }
 
     public void displayHealth()
