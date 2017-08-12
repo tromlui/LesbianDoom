@@ -9,6 +9,9 @@ public class DoorScript : MonoBehaviour {
 	//if the door is either moving to close or open
 	bool isAnimating = false;
 
+	//amount of units the door opens + closes
+	public float doorAmount = 6f;
+
 	//Trigger object, used specifically to tell when in range of trigger
 	DoorTrigger dt;
 
@@ -29,14 +32,14 @@ public class DoorScript : MonoBehaviour {
 				//AND if the player is in range, the door isnt changing states
 				if (dt.playerInRange && !isAnimating) {
 					//We animate the door to be open
-					StartCoroutine(DoorAnimate(4f));
+					StartCoroutine(DoorAnimate(doorAmount));
 					doorOpen = !doorOpen;
 				}
 			} else {
 				//If the door is open...
 				if (!isAnimating) {
 					//We animate the door to be closed
-					StartCoroutine(DoorAnimate(-4f));
+					StartCoroutine(DoorAnimate(-doorAmount));
 					doorOpen = !doorOpen;
 				}
 
@@ -46,7 +49,7 @@ public class DoorScript : MonoBehaviour {
 		//if the player isn't in range and the door is closed, and not animating...
 		if (!dt.playerInRange && doorOpen && !isAnimating) {
 			//we close the door!
-			StartCoroutine(DoorAnimate(-4f));
+			StartCoroutine(DoorAnimate(-doorAmount));
 			doorOpen = !doorOpen;
 		}
 	}

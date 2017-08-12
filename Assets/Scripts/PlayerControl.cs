@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour {
 		inputVector.x = Input.GetAxis ("Strafe") * Time.deltaTime * moveSpeed;
 
 		//transform.Translate (inputVector.x, 0f, 0f);
+		inputVector.y = Physics.gravity.y;
 
 		player.Move (transform.TransformDirection (inputVector));
 		transform.Rotate(0, turnAngle, 0);
