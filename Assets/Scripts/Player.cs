@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 	// creates the variables for health, ammo, and armor
-    public int playerCurHP;
-    public int playerMaxHP;
-    public int playerCurAmmo;
-    private int playerMaxAmmo;
+	public float playerCurHP;
+	public float playerMaxHP;
+	public int playerCurAmmo;
+	private int playerMaxAmmo;
     public int playerCurArmor;
     private int playerMaxArmor = 200;
 
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 	//here's the end game stuff
 	public GameOver gameOver;
 
-    //Need variables for bullets, shells, rockets, and cell?
+
 
     // Set the starting values
     void Start()
@@ -67,15 +67,16 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Health"))
         {
-			if (playerCurHP != playerMaxHP) {
-				playerCurHP += 15;
-				Destroy(other.gameObject);
-				Debug.Log(playerCurHP);
-                displayHealth();
-			}
+			other.GetComponent<Items>().itemPickupSound.Play ();
+			playerCurHP += 15;
+			Destroy (other.gameObject);
+			Debug.Log ("Inside tester");
+			Debug.Log(playerCurHP);
+            displayHealth();
         }
         else if (other.gameObject.CompareTag("Ammo"))
         {
+			other.GetComponent<Items>().itemPickupSound.Play ();
             playerCurAmmo += 15;
             Destroy(other.gameObject);
             displayAmmo();
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
         }
 		else if (other.gameObject.CompareTag("ArmorPot"))
 		{
+			other.GetComponent<Items>().itemPickupSound.Play ();
 			playerCurArmor += 1;
 			Destroy(other.gameObject);
 			displayArmor();
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour
 
 		else if (other.gameObject.CompareTag("Armor"))
 		{
+			other.GetComponent<Items>().itemPickupSound.Play ();
 			if (playerCurArmor < 100) {
 				playerCurArmor = 100;
 				Destroy(other.gameObject);
@@ -99,21 +102,22 @@ public class Player : MonoBehaviour
 			}
 
 		}
+			
     }
 
     public void displayHealth()
     {
-        healthCount.text = playerCurHP.ToString();
+        healthCount.text = playerCurHP.ToString("F0");
     }
 
     public void displayAmmo()
     {
-        ammoCount.text = playerCurAmmo.ToString();
+        ammoCount.text = playerCurAmmo.ToString("F0");
     }
 
     public void displayArmor()
     {
-        armorCount.text = playerCurArmor.ToString();
+        armorCount.text = playerCurArmor.ToString("F0");
     }
 
     // create another for ammo (have to playtest more to see how that works)
