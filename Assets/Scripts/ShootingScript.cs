@@ -18,6 +18,8 @@ public class ShootingScript : MonoBehaviour {
 	public ShootingAnimation shootinganimation;
 	public Player ammoCount;
 
+	public float timeBetweenShots = 0.33f;
+	private float timeStamp;
 
 	// Update is called once per frame
 	void Update () {
@@ -30,9 +32,10 @@ public class ShootingScript : MonoBehaviour {
 		hit = new RaycastHit ();
 
 		//shoot from center of camera
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Time.time >= timeStamp && Input.GetKeyDown (KeyCode.Space)) {
 			if (ammoCount.playerCurAmmo != 0){
 				shootinganimation.shoot(); //plays the firing animation when spacebar is hit
+				timeStamp = Time.time + timeBetweenShots;
 				GameObject.Find("Player").GetComponent<Player>().playerCurAmmo -= 1;// Subtracts 1 bullet each time player shoots
 				ammoCount.displayAmmo(); //Displays ammo count
 			}
