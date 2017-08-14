@@ -33,7 +33,9 @@ public class EnemyAI : MonoBehaviour {
 		if (trigger.canMove == true) {
 			transform.LookAt (player.position);
 			//transform.position = Vector3.MoveTowards (transform.position, player.position, 0.75f);
-			enemy.Move(Vector3.Normalize(player.position - transform.position) * 5f * Time.deltaTime);
+			Vector3 moveDirection = Vector3.Normalize(player.position - transform.position);
+			moveDirection += Physics.gravity;
+			enemy.Move(moveDirection * 5f * Time.deltaTime);
 
 		}
 		if (Physics.Raycast (ray, out rayHit, raycastRange)) {
