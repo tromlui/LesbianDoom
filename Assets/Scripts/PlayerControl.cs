@@ -35,5 +35,9 @@ public class PlayerControl : MonoBehaviour {
 
 		player.Move (transform.TransformDirection (inputVector));
 		transform.Rotate(0, turnAngle, 0);
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.LoadLevel (Application.loadedLevelName);
+		}
 	}
 }
