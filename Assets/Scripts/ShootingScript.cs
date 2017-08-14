@@ -21,6 +21,8 @@ public class ShootingScript : MonoBehaviour {
 	public float timeBetweenShots = 0.33f;
 	private float timeStamp;
 
+	public AudioSource firingSound;
+
 	// Update is called once per frame
 	void Update () {
 		//gets position of camera
@@ -35,6 +37,7 @@ public class ShootingScript : MonoBehaviour {
 		if (Time.time >= timeStamp && Input.GetKeyDown (KeyCode.Space)) {
 			if (ammoCount.playerCurAmmo != 0){
 				shootinganimation.shoot(); //plays the firing animation when spacebar is hit
+				firingSound.Play ();// plays the firing noise xd
 				timeStamp = Time.time + timeBetweenShots;
 				GameObject.Find("Player").GetComponent<Player>().playerCurAmmo -= 1;// Subtracts 1 bullet each time player shoots
 				ammoCount.displayAmmo(); //Displays ammo count
