@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 		} else if (other.gameObject.CompareTag ("Armor")) {
 			other.GetComponent<Items> ().itemPickupSound.Play ();
 			if (playerCurArmor < 100) {
-				playerCurArmor = 100;
+				playerCurArmor += 100;
 				Destroy (other.gameObject);
 				displayArmor ();
 				Debug.Log (armorCount);
