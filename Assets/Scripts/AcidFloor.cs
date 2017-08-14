@@ -18,13 +18,13 @@ public class AcidFloor : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider acidEnter){
-		if (acidEnter.gameObject.CompareTag ("Player")) {
+		if (acidEnter.gameObject.CompareTag ("player")) {
 			onAcid = true;
 		}
 	}
 
 	void OnTriggerExit(Collider acidExit){
-		if (acidExit.gameObject.CompareTag ("Player")) {
+		if (acidExit.gameObject.CompareTag ("player")) {
 			onAcid = false;
 		}
 

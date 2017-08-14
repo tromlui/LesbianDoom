@@ -9,6 +9,9 @@ public class DoorScript : MonoBehaviour {
 	//if the door is either moving to close or open
 	bool isAnimating = false;
 
+	//door opening and closing
+	public AudioSource openDoorSound;
+
 	//amount of units the door opens + closes
 	public float doorAmount = 6f;
 
@@ -33,6 +36,7 @@ public class DoorScript : MonoBehaviour {
 				if (dt.playerInRange && !isAnimating) {
 					//We animate the door to be open
 					StartCoroutine(DoorAnimate(doorAmount));
+					openDoorSound.Play ();
 					doorOpen = !doorOpen;
 				}
 			} else {

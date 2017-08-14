@@ -65,42 +65,33 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Health"))
-        {
-			other.GetComponent<Items>().itemPickupSound.Play ();
+		if (other.gameObject.CompareTag ("Health")) {
+			other.GetComponent<Items> ().itemPickupSound.Play ();
 			playerCurHP += 15;
 			Destroy (other.gameObject);
 			Debug.Log ("Inside tester");
-			Debug.Log(playerCurHP);
-            displayHealth();
-        }
-        else if (other.gameObject.CompareTag("Ammo"))
-        {
-			other.GetComponent<Items>().itemPickupSound.Play ();
-            playerCurAmmo += 15;
-            Destroy(other.gameObject);
-            displayAmmo();
-            Debug.Log(ammoCount);
-        }
-		else if (other.gameObject.CompareTag("ArmorPot"))
-		{
-			other.GetComponent<Items>().itemPickupSound.Play ();
+			Debug.Log (playerCurHP);
+			displayHealth ();
+		} else if (other.gameObject.CompareTag ("Ammo")) {
+			other.GetComponent<Items> ().itemPickupSound.Play ();
+			playerCurAmmo += 15;
+			Destroy (other.gameObject);
+			displayAmmo ();
+			Debug.Log (ammoCount);
+		} else if (other.gameObject.CompareTag ("ArmorPot")) {
+			other.GetComponent<Items> ().itemPickupSound.Play ();
 			playerCurArmor += 1;
-			Destroy(other.gameObject);
-			displayArmor();
-			Debug.Log(armorCount);
-		}
-
-		else if (other.gameObject.CompareTag("Armor"))
-		{
-			other.GetComponent<Items>().itemPickupSound.Play ();
+			Destroy (other.gameObject);
+			displayArmor ();
+			Debug.Log (armorCount);
+		} else if (other.gameObject.CompareTag ("Armor")) {
+			other.GetComponent<Items> ().itemPickupSound.Play ();
 			if (playerCurArmor < 100) {
 				playerCurArmor = 100;
-				Destroy(other.gameObject);
-				displayArmor();
-				Debug.Log(armorCount);
+				Destroy (other.gameObject);
+				displayArmor ();
+				Debug.Log (armorCount);
 			}
-
 		}
 			
     }
