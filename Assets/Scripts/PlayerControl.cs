@@ -48,7 +48,7 @@ public class PlayerControl : MonoBehaviour {
 
 		if (startText) {
 			endGameGroup.SetActive (true);
-			endGameText.text = "hey look another doom clone! \n wasd to move \n qe to strafe \n spacebar to shoot \n r to open doors";
+			endGameText.text = "hey look another doom clone! \n wasd to move \n qe to strafe \n spacebar to shoot \n r to open doors \n ESC to restart";
 		} 
 		if (Input.anyKeyDown) {
 			endGameGroup.SetActive (false);
