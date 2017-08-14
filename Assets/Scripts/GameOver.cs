@@ -22,6 +22,7 @@ public class GameOver : MonoBehaviour {
 	}
 	*/
 
+
 	public void YouLose () {
 
 		/*
@@ -32,7 +33,8 @@ public class GameOver : MonoBehaviour {
 		*/
 
 		endGameGroup.SetActive (true);
-		endGameText.text = "You Died!";
+		endGameText.text = "You Died!\n Press ESC to restart";
+
 	}
 
 }
